@@ -1,12 +1,9 @@
 // prettier-ignore
 $alert-themes:
   'primary'   #ebf8ff #4299e1 #2b6cb0,
-  'secondary' #f7fafc #cbd5e0 #222731,
-  'info'      #e6fdff #4cd4ce #00727c,
   'success'   #f0fff4 #68d391 #2f855a,
   'warning'   #fffaf0 #ed8936 #c05621,
-  'danger'    #fff5f5 #fc8181 #c53030,
-  'light'     #fff    #edf2f7 #1a202c,
+  'alert'    #fff5f5 #fc8181 #c53030,
   'dark'      #2d3748 #1a202c #d3d3d3;
 
 @mixin alert-variant($backgorund-color, $border-color, $content-color) {
@@ -40,13 +37,13 @@ $alert-themes:
   }
 }
 
-.cdx-alert-align-left{
+.cdx-alert-align-left {
   text-align: left;
 }
-.cdx-alert-align-center{
+.cdx-alert-align-center {
   text-align: center;
 }
-.cdx-alert-align-right{
+.cdx-alert-align-right {
   text-align: right;
 }
 
@@ -54,7 +51,7 @@ $alert-themes:
   outline: none;
 }
 
-.cdx-alert [contentEditable='true'][data-placeholder] {
+.cdx-alert [contentEditable="true"][data-placeholder] {
   &::before {
     position: absolute;
     content: attr(data-placeholder);
@@ -73,11 +70,7 @@ $alert-themes:
 }
 
 @each $name, $backgorund-color, $border-color, $content-color in $alert-themes {
-  .ce-popover__item[data-item-name='alert-#{$name}'] .ce-popover__item-icon {
-    @include settings-icon-variant(
-      $backgorund-color,
-      $border-color,
-      $content-color
-    );
+  .ce-popover__item[data-item-name="alert-#{$name}"] .ce-popover__item-icon {
+    @include settings-icon-variant($backgorund-color, $border-color, $content-color);
   }
 }

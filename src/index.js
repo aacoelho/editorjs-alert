@@ -47,7 +47,7 @@ export default class Alert {
   static get toolbox() {
     return {
       icon: ToolboxIcon,
-      title: 'Alert',
+      title: 'Callout Box',
     };
   }
 
@@ -67,7 +67,7 @@ export default class Alert {
    * @returns {string}
    */
   static get DEFAULT_TYPE() {
-    return 'info';
+    return 'primary';
   }
 
   /**
@@ -99,12 +99,9 @@ export default class Alert {
   static get ALERT_TYPES() {
     return [
       'primary',
-      'secondary',
-      'info',
       'success',
       'warning',
-      'danger',
-      'light',
+      'alert',
       'dark',
     ];
   }
