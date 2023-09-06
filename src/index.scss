@@ -58,6 +58,7 @@ $alert-themes:
     color: #707684;
     font-weight: normal;
     opacity: 0;
+    pointer-events: none;
   }
 
   &:empty::before {
