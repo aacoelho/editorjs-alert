@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor.js Alert Demo</title>
+    <link href="assets/demo.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@2.28.0/dist/editorjs.umd.min.js"></script>
+    <script src="../dist/development.bundle.js"></script>
+  </head>
+  <body>
+
+    <div class="main">
+      <div id="editorjs"></div>
+      <button id="save-button">Save</button>
+      <pre id="output"></pre>
+    </div>
+
+    <script>
+      const editor = new EditorJS({
+        holder: 'editorjs',
+        data: {
+          blocks: [
+            {
+              type: 'paragraph',
+              data: {
+                text: '<h1>Editor.js Alert Demo</h1>',
+              },
+            },
+            {
+              type: 'alert',
+              data: {
+                type: 'primary',
+                align: 'left',
+                message: 'Something happened that you should know about.',
+              },
+            },
+            {
+              type: 'alert',
+              data: {
+                type: 'warning',
+                message:
+                  '<strong>Be Warned</strong><br/>Something not ideal might be happening.',
+              },
+            },
+            {
+              type: 'alert',
+              data: {
+                type: 'alert',
+                align: 'center',
+                message:
+                  '<strong>Holy smokes!</strong><br/>Something seriously <em>bad</em> happened.',
+              },
+            },
+          ],
+        },
+        tools: {
+          alert: {
+            class: Alert,
+            /* to display inline tools, enable `inlineToolbar` option */
+            inlineToolbar: true,
+          },
+        },
+      });
+
+      const saveButton = document.getElementById('save-button');
+      const output = document.getElementById('output');
+
+      saveButton.addEventListener('click', () => {
+        editor.save().then((savedData) => {
+          output.innerText = JSON.stringify(savedData, null, 4);
+        });
+      });
+    </script>
+  </body>
+</html>
