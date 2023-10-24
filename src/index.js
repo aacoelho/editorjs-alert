@@ -113,7 +113,20 @@ export default class Alert {
    * @returns {array}
    */
   static get ALIGN_TYPES() {
-    return ['left', 'center', 'right'];
+    return [
+      {
+          name: 'left',
+          title: 'Align left',
+      },
+      {
+          name: 'center',
+          title: 'Align center',
+      },
+      {
+          name: 'right',
+          title: 'Align right',
+      }
+    ];
   }
 
   /**
@@ -150,7 +163,7 @@ export default class Alert {
       type: Alert.ALERT_TYPES.includes(data.type)
         ? data.type
         : this.defaultType,
-      align: Alert.ALIGN_TYPES.includes(data.align)
+      align: Alert.ALIGN_TYPES.some(item => item.name === data.align)
         ? data.align
         : this.defaultAlign,
       message: data.message || '',
@@ -215,19 +228,19 @@ export default class Alert {
 
     const alignTypes = Alert.ALIGN_TYPES.map((align) => ({
       icon:
-        align == 'left'
+        align.name == 'left'
           ? AlignLeftIcon
-          : align == 'center'
+          : align.name == 'center'
           ? AlignCenterIcon
-          : align == 'right'
+          : align.name == 'right'
           ? AlignRightIcon
           : IconAlign_left,
-      name: `align-${align}`,
-      label: this._getFormattedName(align),
+      name: `align-${align.name}`,
+      label: align.title,
       toggle: 'align',
-      isActive: this.data.align === align,
+      isActive: this.data.align === align.name,
       onActivate: () => {
-        this._changeAlignType(align);
+        this._changeAlignType(align.name);
       },
     }));
     return [...alertTypes, ...alignTypes];
@@ -277,12 +290,12 @@ export default class Alert {
     this.data.align = newAlign;
 
     Alert.ALIGN_TYPES.forEach((align) => {
-      const alignClass = this.CSS.wrapperForAlignType(align);
+      const alignClass = this.CSS.wrapperForAlignType(align.name);
 
       // Remove the old Alert type class
       this.container.classList.remove(alignClass);
 
-      if (newAlign === align) {
+      if (newAlign === align.name) {
         // Add an Alert class for the selected Alert type
         this.container.classList.add(alignClass);
       }
