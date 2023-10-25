@@ -47,7 +47,7 @@ export default class Alert {
   static get toolbox() {
     return {
       icon: ToolboxIcon,
-      title: 'Callout Box',
+      title: 'Callout box',
     };
   }
 
@@ -87,7 +87,7 @@ export default class Alert {
    * @returns {string}
    */
   static get DEFAULT_MESSAGE_PLACEHOLDER() {
-    return 'Type here...';
+    return 'Enter message';
   }
 
   /**
@@ -137,8 +137,8 @@ export default class Alert {
   get CSS() {
     return {
       wrapper: 'cdx-alert',
-      wrapperForType: (type) => `cdx-alert-${type}`,
-      wrapperForAlignType: (alignType) => `cdx-alert-align-${alignType}`,
+      wrapperForType: (type) => `cdx-alert--${type}`,
+      wrapperForAlignType: (alignType) => `cdx-alert--${alignType}`,
       message: 'cdx-alert__message',
     };
   }
