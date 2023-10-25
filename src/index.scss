@@ -57,6 +57,16 @@ $alert-themes:
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 1.5;
+
+  a {
+    color: #0080ff;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #006edb;
+    }
+  }
 }
 
 .cdx-alert .cdx-alert__message[contentEditable="true"][data-placeholder] {
@@ -87,6 +97,11 @@ $alert-themes:
   &::before {
     color: #81878c;
   }
+}
+
+.cdx-alert--primary .cdx-alert__message::selection,
+.cdx-alert--primary .cdx-alert__message > *::selection {
+  background-color: #ffffff;
 }
 
 #editorjs {
