@@ -5,6 +5,7 @@
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack --mode production",
+    "build:test": "webpack --mode production --watch",
     "dev": "webpack --mode development --watch",
     "precommit": "yarn build && git add dist && lint-staged"
   },
